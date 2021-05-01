@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import MovieCard from './MovieCard';
 import NominatedMovieCard from './NominatedMovieCard';
 import SearchArea from '../Search/SearchArea';
 import Popup from '../Popup/Popup';
 import LoaderSpinner from '../Common/LoaderSpinner';
+import Button from '../Common/Button';
 
 export default function MoviesBoard() {
     const [movies, setMovies] = useState([]);
     const [nominatedMovies, setNominatedMovies] = useState([]);
     const [popupOpen, setPopupOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
         if(nominatedMovies.length === 5) {
@@ -19,10 +22,25 @@ export default function MoviesBoard() {
         };
     }, [nominatedMovies]);
 
+    const handleLoadMore = () => {
+        const page = Math.round(movies.length / 10 + 1);
+        const key = process.env.REACT_APP_OMDB_KEY;
+        
+        axios.get(`https://www.omdbapi.com/?apikey=${key}&s=${query}&type=movie&page=${page}`)
+        .then(res => {
+            const newMovies = res.data.Search;
+            setMovies(prevMovies => [...prevMovies, ...newMovies]);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
     const renderMovies = () => {
         if(!isLoading && movies && movies.length > 0) {
             return (
-                movies.map((movie) => (
+                <>
+                {movies.map((movie) => (
                     <MovieCard 
                         movie={movie}
                         key={movie.imdbID}
@@ -30,7 +48,15 @@ export default function MoviesBoard() {
                         setMovies={setMovies}
                         nominatedMovies={nominatedMovies}
                         setNominatedMovies={setNominatedMovies}
-                    />)))
+                    />))
+                }
+                {movies.length >= 10 && movies.length % 10 === 0 && 
+                    <StyledButton onClick={handleLoadMore}>
+                        Load More
+                    </StyledButton>
+                }
+                </>
+                )
         } else if(isLoading) {
             return (
                 <LoaderSpinner/>
@@ -47,6 +73,8 @@ export default function MoviesBoard() {
             <SearchArea 
                 setMovies={setMovies}
                 setIsLoading={setIsLoading}
+                query={query}
+                setQuery={setQuery}
             />
             <MoviesWrapper>
                 <DashboardWrapper>
@@ -114,4 +142,13 @@ const Subheader = styled.h4`
     padding-top: 0.75em;
     padding-bottom: 0.75em;
     border-radius: 6px 6px 0 0;
+`;
+
+const StyledButton = styled(Button)`
+    margin: 0.5em 0 1em 0;
+    background: #f2971f;
+
+    @media(max-width: 600px) {
+        font-size: 0.6em;
+    }
 `;

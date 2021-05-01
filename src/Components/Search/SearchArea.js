@@ -1,11 +1,10 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import debounce from 'lodash.debounce';
 
 export default function MovieCard(props) {
-    const { setMovies, setIsLoading } = props;
-    const [query, setQuery] = useState('');
+    const { setMovies, setIsLoading, query, setQuery } = props;
     
     const searchMovies = (nextValue) => {
         const key = process.env.REACT_APP_OMDB_KEY;
