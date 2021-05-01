@@ -3,10 +3,8 @@ import styled from 'styled-components';
 
 import MovieCard from './MovieCard';
 import NominatedMovieCard from './NominatedMovieCard';
-import SearchArea from './SearchArea';
-import Popup from './Popup';
-import Subheader from '../StyledElements/Subheader';
-import DashboardWrapper from '../StyledElements/DashboardWrapper';
+import SearchArea from '../Search/SearchArea';
+import Popup from '../Popup/Popup';
 import LoaderSpinner from '../Common/LoaderSpinner';
 
 export default function MoviesBoard() {
@@ -34,15 +32,13 @@ export default function MoviesBoard() {
                         setNominatedMovies={setNominatedMovies}
                     />)))
         } else if(isLoading) {
-            return <LoaderSpinner
-                type='ThreeDots' 
-                color='black' 
-                height={50} 
-                width={50} 
-                data-testid='loader-spinner'
-            />
+            return (
+                <LoaderSpinner/>
+            )
         } else {
-            return <Directions>Please search for movies above ☝️</Directions>
+            return (
+                <Directions>Please search for movies above ☝️</Directions>
+            )
         }
     };
 
@@ -87,6 +83,20 @@ const MoviesWrapper = styled.div`
     width: 100%;
 `;
 
+const DashboardWrapper = styled.div`
+    width: 49%;
+    text-align: center;
+    box-sizing: border-box;
+	font-size: 1rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background: white;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    overflow: hidden;
+`;
+
 const StyledDashboardWrapper = styled(DashboardWrapper)`
     max-height: 570px;
 `;
@@ -95,4 +105,13 @@ const Directions = styled.div`
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: 0.5em;
+`;
+
+const Subheader = styled.h4`
+    margin: 0 0 1em 0;
+    background: #008060;
+    color: #ffffff;
+    padding-top: 0.75em;
+    padding-bottom: 0.75em;
+    border-radius: 6px 6px 0 0;
 `;

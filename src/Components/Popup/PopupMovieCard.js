@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Poster from '../StyledElements/Poster';
+import Poster from '../Common/Poster';
 
 export default function PopupMovieCard(props) {
     const { movie } = props;

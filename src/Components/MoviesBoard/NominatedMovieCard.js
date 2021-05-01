@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Button from '../StyledElements/Button';
-import Poster from '../StyledElements/Poster';
+import Button from '../Common/Button';
+import Poster from '../Common/Poster';
 
 export default function MovieCard(props) {
     const { movie, nominatedMovies, setNominatedMovies } = props;

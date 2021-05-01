@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import Icon from './Components/StyledElements/Icon';
-import MoviesBoard from './Components/Movies/MoviesBoard';
+import Icon from './Components/Common/Icon';
+import MoviesBoard from './Components/MoviesBoard/MoviesBoard';
 
 function App() {
   return (
