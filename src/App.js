@@ -37,7 +37,7 @@ const SubHeader = styled.h3`
 
   @media(max-width: 600px) {
       margin-top: 0;
-    }
+  }
 `;
 
 export default App;

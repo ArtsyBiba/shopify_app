@@ -50,6 +50,10 @@ const CardWrapper = styled.div`
 const Info = styled.div`
     margin-left: 0.5em;
     text-align: left;
+
+    @media(max-width: 600px) {
+      font-size: 0.8em;
+    }
 `;
 
 const Details = styled.div`
@@ -64,5 +68,11 @@ const NominateButton = styled(Button)`
 
     &:hover {
         background: #a65e00;
+    }
+
+    @media(max-width: 600px) {
+      max-width: 100px;
+      padding: 0.5rem 1rem;
+      margin: 1em 0 0.5em 0.5em;
     }
 `;

@@ -70,6 +70,13 @@ const StyledButton = styled(Button)`
 	width: 40%;
 	align-self: center;
 	margin: 0 0 0.5em 0;
+
+	@media(max-width: 600px) {
+      max-width: 100px;
+      padding: 0.5rem 0.5rem;
+      margin: 0.5em 0 0.5em 0em;
+	  
+    }
 `;
 
 const Header = styled.div`

@@ -21,6 +21,12 @@ const Button = styled.button`
 
         transition: all 0.3s ease 0s;
     }
+
+    @media(max-width: 600px) {
+      max-width: 100px;
+      padding: 0.5rem 1rem;
+      margin: 1em 0 0.5em 0.5em;
+    }
 `;
 
 

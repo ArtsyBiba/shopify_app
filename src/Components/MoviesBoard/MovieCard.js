@@ -60,12 +60,17 @@ const CardWrapper = styled.div`
 const Info = styled.div`
     margin-left: 0.5em;
     text-align: left;
+
+    @media(max-width: 600px) {
+      font-size: 0.8em;
+    }
 `;
 
 const Details = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: stretch;
     width: 80%;
 `;
 
@@ -81,4 +86,10 @@ const DisabledButton = styled.div`
     box-shadow: 0 5px 15px 0 rgba(0,0,0,0.15);
     background: #a1a6ad;
     margin: 1em 0 0.5em 1em;
+
+    @media(max-width: 600px) {
+      max-width: 100px;
+      padding: 0.5rem 0.7rem;
+      margin: 1em 0 0.5em 0.5em;
+    }
 `;
