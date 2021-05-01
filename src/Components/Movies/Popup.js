@@ -26,14 +26,14 @@ export default function Popup(props) {
 			<StyledButton onClick={() => setPopupOpen(false)}>Return to Nominations</StyledButton>
 			<SocialMediaWrapper>
 				<FacebookShareButton 
-					url='https://the-shoppies-ab.vercel.app/'
+					url='https://shopify-app-blush.vercel.app/'
 					quote='Help your favorite movies win The Shoppies!'
 					hashtag='#theshoppies'
 				>
 					<FacebookIcon size={30} round={true} />
 				</FacebookShareButton>
 				<TwitterShareButton
-					url='https://the-shoppies-ab.vercel.app/'
+					url='https://shopify-app-blush.vercel.app/'
 					title='Help your favorite movies win The Shoppies!'
 					hashtag='#theshoppies'
 				> 
